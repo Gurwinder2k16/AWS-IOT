@@ -1,0 +1,6 @@
+
+openssl pkcs12 -export -out iot_keystore.p12 -inkey del-private.pem.key -in del-certificate.pem.crt -name iot
+
+keytool -importkeystore -srckeystore iot_keystore.p12 -srcstoretype pkcs12 -destkeystore iot_keystore.bks -deststoretype bks --provider org.bouncycastle.jce.provider.BouncyCastleProvider -–providerpath bcprov-jdk16-146.jar
+
+keytool -list -v -keystore iot_keystore.bks -storetype bks -storepass Asdfghjkl@123  -provider org.bouncycastle.jce.provider.BouncyCastleProvider -providerpath bcprov-jdk16-146.jar
